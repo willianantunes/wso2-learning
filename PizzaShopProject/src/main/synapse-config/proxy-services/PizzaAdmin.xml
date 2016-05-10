@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PizzaAdmin" startOnLoad="true" trace="disable"
+  transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+  <target>
+    <inSequence>
+      <payloadFactory media-type="json">
+        <format>{"pizza":	{"name":	"$1",	"price":	$2,	"topping":	$3}}</format>
+        <args>
+          <arg evaluator="xml" expression="//pizza/name"/>
+          <arg evaluator="xml" expression="//pizza/price"/>
+          <arg evaluator="json" expression="pizza.toppings.topping"/>
+        </args>
+      </payloadFactory>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send>
+        <endpoint>
+          <http method="post" trace="disable" uri-template="http://10.10.12.114:9764/pizzashop-rs_1.0/services/menu/pizza"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </target>
+</proxy>
