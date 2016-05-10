@@ -5,4 +5,7 @@
     <artifact name="pizzashop" groupId="br.com.willianantunes.wso2.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/pizzashop.xml</file>
     </artifact>
+    <artifact name="My_ESB_Task" groupId="br.com.willianantunes.wso2.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/tasks/My_ESB_Task.xml</file>
+    </artifact>
 </artifacts>
