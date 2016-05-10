@@ -8,4 +8,22 @@
     <artifact name="CallMediatorProxy" groupId="br.com.willianantunes.wso2.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/CallMediatorProxy.xml</file>
     </artifact>
+    <artifact name="EchoMessageStore" groupId="br.com.willianantunes.wso2.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/EchoMessageStore.xml</file>
+    </artifact>
+    <artifact name="MessageStoreProxy" groupId="br.com.willianantunes.wso2.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/MessageStoreProxy.xml</file>
+    </artifact>
+    <artifact name="EchoMessageStore" groupId="br.com.willianantunes.wso2.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/EchoMessageStore.xml</file>
+    </artifact>
+    <artifact name="EchoEndpoint" groupId="br.com.willianantunes.wso2.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/EchoEndpoint.xml</file>
+    </artifact>
+    <artifact name="LogSequence" groupId="br.com.willianantunes.wso2.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/LogSequence.xml</file>
+    </artifact>
+    <artifact name="EchoMessageProcessor" groupId="br.com.willianantunes.wso2.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/EchoMessageProcessor.xml</file>
+    </artifact>
 </artifacts>

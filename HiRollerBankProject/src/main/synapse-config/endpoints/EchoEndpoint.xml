@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="EchoEndpoint" xmlns="http://ws.apache.org/ns/synapse">
+  <address trace="disable" uri="http://10.10.12.114:8280/services/echo"/>
+</endpoint>
