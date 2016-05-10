@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="CallMediatorProxy" startOnLoad="true" trace="disable"
+  transports="https http" xmlns="http://ws.apache.org/ns/synapse">
+  <target>
+    <inSequence>
+      <call>
+        <endpoint>
+          <address trace="disable" uri="http://10.10.12.114:9764/HiRollerBankWS/services/geolocation"/>
+        </endpoint>
+      </call>
+      <payloadFactory media-type="xml">
+        <format>
+          <hir:getLocation xmlns:hir="http://hirollerbankws.training.wso2.com/">
+            <zipcode xmlns="">$1</zipcode>
+          </hir:getLocation>
+        </format>
+        <args>
+          <arg evaluator="xml" expression="//*[local-name()='return']" xmlns:hir="http://hirollerbankws.training.wso2.com/"/>
+        </args>
+      </payloadFactory>
+      <call>
+        <endpoint>
+          <address trace="disable" uri="http://10.10.12.114:9764/HiRollerBankWS/services/atmlocator"/>
+        </endpoint>
+      </call>
+      <respond/>
+    </inSequence>
+    <outSequence/>
+    <faultSequence/>
+  </target>
+</proxy>
