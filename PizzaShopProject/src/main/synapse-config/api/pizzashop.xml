@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/pizzashop" name="pizzashop" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="GET" protocol="http" uri-template="/api/order/{orderId}">
+    <inSequence>
+      <log level="full"/>
+      <send>
+        <endpoint>
+          <http method="get" trace="disable" uri-template="http://localhost:9764/pizzashop-rs_1.0/services/menu/order/{uri.var.orderId}"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+</api>

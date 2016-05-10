@@ -2,4 +2,7 @@
     <artifact name="PizzaAdmin" groupId="br.com.willianantunes.wso2.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/PizzaAdmin.xml</file>
     </artifact>
+    <artifact name="pizzashop" groupId="br.com.willianantunes.wso2.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/pizzashop.xml</file>
+    </artifact>
 </artifacts>
