@@ -8,4 +8,7 @@
     <artifact name="My_ESB_Task" groupId="br.com.willianantunes.wso2.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/tasks/My_ESB_Task.xml</file>
     </artifact>
+    <artifact name="My_Custom_Task" groupId="br.com.willianantunes.wso2.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/tasks/My_Custom_Task.xml</file>
+    </artifact>
 </artifacts>
