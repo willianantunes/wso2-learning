@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="CachingMediator" startOnLoad="true" trace="disable"
+  transports="https http" xmlns="http://ws.apache.org/ns/synapse">
+  <target>
+    <endpoint name="endpoint_urn_uuid_3a2fef60-00bb-45e3-8bd7-450a1b57d383">
+      <address trace="disable" uri="http://localhost:9764/HiRollerBankWS/services/accounts"/>
+    </endpoint>
+    <inSequence>
+      <cache collector="false"
+        hashGenerator="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+        id="cache_mediator_test" maxMessageSize="2000"
+        scope="per-mediator" timeout="120">
+        <onCacheHit/>
+        <implementation maxSize="1000" type="memory"/>
+      </cache>
+    </inSequence>
+    <outSequence>
+      <cache collector="true" id="cache_mediator_test" scope="per-mediator"/>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </target>
+</proxy>

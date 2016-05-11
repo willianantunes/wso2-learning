@@ -29,4 +29,7 @@
     <artifact name="ThrottleProxy" groupId="br.com.willianantunes.wso2.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/ThrottleProxy.xml</file>
     </artifact>
+    <artifact name="CachingMediator" groupId="br.com.willianantunes.wso2.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/CachingMediator.xml</file>
+    </artifact>
 </artifacts>
