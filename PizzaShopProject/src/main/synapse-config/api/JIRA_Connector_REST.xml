@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/jiraREST" name="JIRA_Connector_REST" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="GET" protocol="http" uri-template="/{jiraid}">
+    <inSequence>
+      <log level="full"/>
+      <property expression="get-property('uri.var.jiraid')"
+        name="uri_value" scope="default" type="STRING"/>
+      <jira.init>
+        <uri>https://wso2.org/jira</uri>
+        <username>esb.fundamentals@gmail.com</username>
+        <password>TestTestTest</password>
+      </jira.init>
+      <jira.getIssue>
+        <issueIdOrKey>{$ctx:uri_value}</issueIdOrKey>
+      </jira.getIssue>
+      <log level="full"/>
+      <respond/>
+    </inSequence>
+    <outSequence/>
+    <faultSequence>
+      <log category="ERROR" description="">
+        <property expression="get-property('ERROR_MESSAGE')" name="messageFaultError"/>
+        <property expression="get-property('ERROR_CODE')" name="messageFaultCode"/>
+        <property expression="get-property('ERROR_EXCEPTION')" name="messageFaultException"/>
+        <property expression="get-property('ERROR_DETAIL')" name="messageFaultDetail"/>
+      </log>
+      <script description="" language="js"><![CDATA[var error_message = mc.getProperty("ERROR_MESSAGE");
+var error_code = mc.getProperty("ERROR_CODE");
+var error_exception = mc.getProperty("ERROR_EXCEPTION");
+var error_detail = mc.getProperty("ERROR_DETAIL");
+mc.setPayloadXML(<result>
+<status>false</status>
+<log>
+	<error_message>{error_message}</error_message>
+	<error_code>{error_code}</error_code>
+	<error_exception>{error_exception}</error_exception>
+	<error_detail>{error_detail}</error_detail>
+</log>
+</result>);]]></script>
+      <send/>
+    </faultSequence>
+  </resource>
+</api>

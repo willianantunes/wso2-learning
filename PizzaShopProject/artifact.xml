@@ -11,4 +11,7 @@
     <artifact name="My_Custom_Task" groupId="br.com.willianantunes.wso2.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/tasks/My_Custom_Task.xml</file>
     </artifact>
+    <artifact name="JIRA_Connector_REST" groupId="br.com.willianantunes.wso2.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/JIRA_Connector_REST.xml</file>
+    </artifact>
 </artifacts>
