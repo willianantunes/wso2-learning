@@ -26,4 +26,7 @@
     <artifact name="EchoMessageProcessor" groupId="br.com.willianantunes.wso2.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/message-processors/EchoMessageProcessor.xml</file>
     </artifact>
+    <artifact name="ThrottleProxy" groupId="br.com.willianantunes.wso2.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/ThrottleProxy.xml</file>
+    </artifact>
 </artifacts>

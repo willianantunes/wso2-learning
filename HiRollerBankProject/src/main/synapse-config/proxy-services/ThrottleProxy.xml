@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ThrottleProxy" startOnLoad="true" trace="disable"
+  transports="https http" xmlns="http://ws.apache.org/ns/synapse">
+  <target>
+    <inSequence>
+      <throttle id="group_id">
+        <policy>
+          <wsp:Policy wsu:id="WSO2MediatorThrottlingPolicy"
+            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <throttle:MediatorThrottleAssertion xmlns:throttle="http://www.wso2.org/products/wso2commons/throttle">
+              <throttle:MaximumConcurrentAccess>0</throttle:MaximumConcurrentAccess>
+              <wsp:Policy>
+                <throttle:ID throttle:type="IP">other</throttle:ID>
+                <wsp:Policy>
+                  <throttle:Control>
+                    <wsp:Policy>
+                      <throttle:MaximumCount>5</throttle:MaximumCount>
+                      <throttle:UnitTime>60000</throttle:UnitTime>
+                      <throttle:ProhibitTimePeriod>60000</throttle:ProhibitTimePeriod>
+                    </wsp:Policy>
+                  </throttle:Control>
+                </wsp:Policy>
+              </wsp:Policy>
+            </throttle:MediatorThrottleAssertion>
+          </wsp:Policy>
+        </policy>
+        <onReject>
+          <log level="custom" separator=",">
+            <property name="STATUS" value="Message Will NOT Pass - Past Threshold"/>
+          </log>
+          <drop/>
+        </onReject>
+        <onAccept>
+          <log level="custom" separator=",">
+            <property name="STATUS" value="Message Will Pass"/>
+          </log>
+          <send>
+            <endpoint>
+              <address trace="disable" uri="http://localhost:9764/HiRollerBankWS/services/accounts"/>
+            </endpoint>
+          </send>
+        </onAccept>
+      </throttle>
+    </inSequence>
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </target>
+</proxy>
